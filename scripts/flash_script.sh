@@ -85,6 +85,13 @@ if [ -d /system/addon.d ]; then
   chmod 755 $ADDOND
 fi
 
+# Remove genfscon sepolicy rule causing bootloop on v218+
+if ! $SYSTEM_ROOT; then
+  blockdev --setrw /dev/block/mapper/system$SLOT 2>/dev/null
+  mount -o rw,remount /system || mount -o rw,remount /
+  sed -i "/genfscon exfat/d" /system/etc/selinux/plat_sepolicy.cil
+fi
+
 ##################
 # Image Patching
 ##################
