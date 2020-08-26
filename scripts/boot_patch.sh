@@ -159,6 +159,10 @@ if [ -f magisk64 ]; then
 fi
 
 ./magiskboot cpio ramdisk.cpio \
+"rm init.zygote32.rc" \
+"rm init.zygote64_32.rc"
+
+./magiskboot cpio ramdisk.cpio \
 "add 0750 init magiskinit" \
 "mkdir 0750 overlay.d" \
 "mkdir 0750 overlay.d/sbin" \
