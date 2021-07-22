@@ -14,6 +14,7 @@
 #define PROD_POLICY_DIR     "/product/etc/selinux/"
 #define ODM_POLICY_DIR      "/odm/etc/selinux/"
 #define SYSEXT_POLICY_DIR   "/system_ext/etc/selinux/"
+#define SYSEXT_ALT_POLICY_DIR   "/system/system_ext/etc/selinux/"
 #define SPLIT_PLAT_CIL      PLAT_POLICY_DIR "plat_sepolicy.cil"
 
 // Unconstrained domain the daemon and root processes run in

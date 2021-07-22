@@ -145,8 +145,13 @@ sepolicy *sepolicy::compile_split() {
         load_cil(db, path);
 
     cil_file = SYSEXT_POLICY_DIR "system_ext_sepolicy.cil";
-    if (access(cil_file, R_OK) == 0)
+    if (access(cil_file, R_OK) == 0) {
         load_cil(db, cil_file);
+    } else {
+        cil_file = SYSEXT_ALT_POLICY_DIR "system_ext_sepolicy.cil";
+        if (access(cil_file, R_OK) == 0)
+            load_cil(db, cil_file);
+    }
 
     // product
     sprintf(path, PROD_POLICY_DIR "mapping/%s.cil", plat_ver);
